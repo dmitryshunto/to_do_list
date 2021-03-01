@@ -8,7 +8,8 @@ const ToDoTasks: React.FC<MaDispatchToPropsType & MapStateToPropsType> = (props)
     let [new_task_text, set_new_task_text] = useState<string>('')
     let tasks = null
     if(props.tasks) {
-        tasks = props.tasks.map((task: TaskType) => <CurrentTask key = {task.id}
+        tasks = props.tasks.map((task, index) => <CurrentTask key = {task.id}
+                                                                 index = {index + 1}
                                                                  id = {task.id}
                                                                  add_task_to_in_progress_list = {props.add_task_to_in_progress_list}
                                                                  remove_task_from_list = {props.remove_task_from_list}
@@ -30,6 +31,7 @@ const ToDoTasks: React.FC<MaDispatchToPropsType & MapStateToPropsType> = (props)
 }
 
 type CurrentTaskType = {
+    index: number
     id: number
     task_text: string
     remove_task_from_list: typeof actions.remove_task_task_to_list
@@ -46,7 +48,7 @@ const CurrentTask: React.FC<CurrentTaskType> = (props) => {
     }
     return (
         <div>
-            {props.task_text}
+            {`${props.index}. ${props.task_text}`}
             <button onClick = {delete_task}>x</button>
             <button onClick = {add_task_to_in_progress_list}>Add to In progress</button>
         </div>
