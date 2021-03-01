@@ -17,7 +17,7 @@ const InProgressTasks: React.FC<MaDispatchToPropsType & MapStateToPropsType> = (
                                                                  task_text = {task.text}/>)
     }
     return (
-        <div>
+        <div className = 'comp'>
             <h3>In Progress</h3>
             {tasks}
         </div>
@@ -52,7 +52,7 @@ const InProgressTask: React.FC<InProgressTaskType> = (props) => {
         set_task_time(new_task_time)
     }, 1000)
     return (
-        <div>
+        <div className = 'task'>
             <div>{`${props.index}. ${props.task_text}`}</div>
             <div>{task_time}</div>
             <button onClick = {delete_task}>x</button>

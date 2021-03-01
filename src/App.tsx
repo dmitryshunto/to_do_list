@@ -4,10 +4,11 @@ import { Provider } from 'react-redux';
 import store from './redux/redux';
 import InProgressTasks from './Components/InProgressTasks/InProgressTasks';
 import DoneTasks from './Components/DoneTasks/DoneTasks';
+import './App.css'
 
 const App = () => {
   return (
-    <div>
+    <div className = {'app'}>
       <ToDoTasks/>
       <InProgressTasks />
       <DoneTasks />    

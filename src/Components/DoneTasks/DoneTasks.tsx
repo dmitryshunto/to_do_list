@@ -16,7 +16,7 @@ const DoneTasks: React.FC<MapStateToPropsType & MaDispatchToPropsType> = (props)
                                                     task_text = {task.text}/>)
     }
     return (
-        <div>
+        <div className = 'comp'>
             <h3>Done Tasks (hourly rate is 10$)</h3>
             {tasks}            
         </div>
@@ -39,7 +39,7 @@ const DoneTask: React.FC<DoneTaskPropsType> = (props) => {
 
 
     return (
-        <div>
+        <div className = 'task'>
             <div>{`${props.index}. ${props.task_text}`}</div>
             <div>{`${cost} $`}</div>
             <button onClick = {delete_task}>x</button>

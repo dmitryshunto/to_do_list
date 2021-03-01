@@ -16,7 +16,7 @@ const ToDoTasks: React.FC<MaDispatchToPropsType & MapStateToPropsType> = (props)
                                                                  task_text = {task.task}/>)
     }
     return (
-        <div>
+        <div className = 'comp'>
             <h3>To Do</h3>
             {tasks}
             <NewTask cb = {set_new_task_text}
@@ -47,7 +47,7 @@ const CurrentTask: React.FC<CurrentTaskType> = (props) => {
         props.add_task_to_in_progress_list(props.task_text)
     }
     return (
-        <div>
+        <div className = 'task'>
             {`${props.index}. ${props.task_text}`}
             <button onClick = {delete_task}>x</button>
             <button onClick = {add_task_to_in_progress_list}>Add to In progress</button>
