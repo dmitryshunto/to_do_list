@@ -40,7 +40,7 @@ const InProgressTask: React.FC<InProgressTaskType> = (props) => {
         props.remove_task_from_list(props.id)
     }
 
-    let complition_time = Date.now() - props.start_time - 3 * 3600 * 1000
+    let complition_time = Date.now() - props.start_time
 
     const resolve_task = () => {
         props.remove_task_from_list(props.id)
@@ -48,8 +48,17 @@ const InProgressTask: React.FC<InProgressTaskType> = (props) => {
     }
 
     setTimeout(() => {
-        let new_task_time = new Date(complition_time).toLocaleTimeString()
-        set_task_time(new_task_time)
+        let new_task_time = new Date(complition_time)
+        const time_items = [new_task_time.getHours() + new_task_time.getTimezoneOffset()/60, new_task_time.getMinutes(), new_task_time.getSeconds()]
+        let time_for_ui = ''
+        time_items.forEach((item, index) => {
+            if(index < time_items.length - 1) {
+                time_for_ui += item < 10 ? `0${item}:` : `${item}:`
+            } else {
+                time_for_ui += item < 10 ? `0${item}` : `${item}`
+            }
+        })
+        set_task_time(time_for_ui)
     }, 1000)
     return (
         <div className = 'task'>
